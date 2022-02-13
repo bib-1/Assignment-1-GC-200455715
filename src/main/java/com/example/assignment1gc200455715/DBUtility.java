@@ -110,9 +110,10 @@ public class DBUtility {
         }
     }
 
+    //main method to test the methods of this class
     public static void main(String[] args) throws IOException, SQLException {
-
-
-
-         }
+        for ( ChessPlayer c: getChessPlayersFromDB()) {
+            System.out.println(String.format("%s, %s, %s, %d", c.getName(), c.getCountry(), c.getSex(), c.getRating()));
+        }
+     }
 }
