@@ -5,41 +5,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Formatter;
 
 public class DBUtility {
-
-
-    /*
-    //Testing database connection
-
-     public static void DBTest(){
-         try(
-                 Connection conn = DriverManager.getConnection(DBCred.getConnectURL(), DBCred.getUserName(), DBCred.getPassword());
-         )
-         {
-             System.out.println("Connected with database");
-         }
-         catch (SQLException e)
-         {
-             e.printStackTrace();
-         }
-     }
-
-     */
-
-    /*
-        *This method will select data from the database.
-     */
+//This method will select data from the database.
     public static ArrayList<ChessPlayer> getChessPlayersFromDB() throws SQLException{
-        ArrayList<ChessPlayer> players = new ArrayList<ChessPlayer>();
+        ArrayList<ChessPlayer> players = new ArrayList<>();
 
         String selectQuery = "SELECT id, name, country, sex, rating FROM chess_player;";
 
         try(
                 Connection conn = DriverManager.getConnection(DBCred.getConnectURL(), DBCred.getUserName(), DBCred.getPassword()); //connects to the database
                 Statement st = conn.createStatement(); //Creates connection object
-                ResultSet rs = st.executeQuery(selectQuery); // Executes query and stores result
+                ResultSet rs = st.executeQuery(selectQuery) // Executes query and stores result
         ){
             while(rs.next()){
                 int id = rs.getInt("id"); // gets the integer value indexed from id column of db table
@@ -65,10 +42,10 @@ public class DBUtility {
     * To load data from csv to database
     * Reference: https://www.java67.com/2015/08/how-to-load-data-from-csv-file-in-java.html
     **/
-    public static void exportCsvToDatabase(String filename) throws IOException, SQLException {
+    public static void exportCsvToDatabase(String filename) throws IOException {
 
         //using try with resource to read the file using BufferedReader
-        try(BufferedReader br = Files.newBufferedReader(Path.of(filename));
+        try(BufferedReader br = Files.newBufferedReader(Path.of(filename))
         )   {
             String line = br.readLine(); //to read the first line of the file
 
@@ -86,7 +63,7 @@ public class DBUtility {
         }
     }
 
-    public static void insertPlayerIntoDB( String [] array)throws SQLException{
+    public static void insertPlayerIntoDB( String [] array) {
 
         //insert statement
         String insertQuery = "INSERT INTO chess_player(name, country, sex, rating) VALUES(?, ?, ?, ?);";
@@ -111,9 +88,9 @@ public class DBUtility {
     }
 
     //main method to test the methods of this class
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws SQLException {
         for ( ChessPlayer c: getChessPlayersFromDB()) {
-            System.out.println(String.format("%s, %s, %s, %d", c.getName(), c.getCountry(), c.getSex(), c.getRating()));
+            System.out.printf("%s, %s, %s, %d%n", c.getName(), c.getCountry(), c.getSex(), c.getRating());
         }
      }
 }
