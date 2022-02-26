@@ -118,8 +118,52 @@ public class DBUtility {
     return countries;
     }
 
+
+    //To return the numbers of players based on the rating category
+    public static XYChart.Series<String, Integer> getRatingsAndNumber() {
+        XYChart.Series<String, Integer>ratings = new XYChart.Series<>();
+
+
+        String selectQuery = "SELECT '1000 - 1250' AS 'Rating Range', count(rating) as 'Players #'\n" +
+                "FROM chess_player\n" +
+                "where rating BETWEEN 1000 AND 1250\n" +
+                "UNION\n" +
+                "SELECT '1251 - 1500', count(rating)\n" +
+                "FROM chess_player\n" +
+                "where rating BETWEEN 1251 AND 1500\n" +
+                "UNION\n" +
+                "SELECT '1501 - 1750', count(rating)\n" +
+                "FROM chess_player\n" +
+                "where rating BETWEEN 1501 AND 1750\n" +
+                "UNION\n" +
+                "SELECT '1751 - 2000', count(rating)\n" +
+                "FROM chess_player\n" +
+                "where rating BETWEEN 1751 AND 2000\n" +
+                "UNION\n" +
+                "SELECT '> 2000', count(rating)\n" +
+                "FROM chess_player\n" +
+                "where rating > 2000;";
+
+        try (
+                Connection conn = DriverManager.getConnection(DBCred.getConnectURL(), DBCred.getUserName(), DBCred.getPassword()); //connects to the database
+                Statement st = conn.createStatement(); //Creates connection object
+                ResultSet rs = st.executeQuery(selectQuery) // Executes query and stores result
+        ) {
+           while (rs.next()) {
+                int numbers = rs.getInt("Players #"); // gets the integer value indexed from id column of db table
+                String range = rs.getString("Rating Range"); //gets the string value indexes from country column of database
+
+                ratings.getData().addAll(new XYChart.Data<>(range, numbers));
+              }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ratings;
+    }
+
     //main method to test the methods of this class
     public static void main(String[] args) throws SQLException {
-        getCountryAndPlayer();
+        getRatingsAndNumber();
      }
 }
