@@ -36,12 +36,13 @@ public class TableViewController implements Initializable {
 
         //adding the player object to populate in the table
         try {
-            chessPlayerTableView.getItems().addAll(DBUtility.getChessPlayersFromDB());
+            chessPlayerTableView.getItems().addAll(DBUtility.getChessPlayersFromDB()); //getting the players object to populate in the table
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         // This lines sets the value in the columns of the table by getting the properties from the ChessPlayer class
+        // the value inside the braces should be the name of the instance variables of the object you are using for that table
         playerIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         countryColumn.setCellValueFactory(new PropertyValueFactory<>("country"));
