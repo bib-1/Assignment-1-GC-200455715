@@ -1,4 +1,4 @@
-package com.example.assignment1gc200455715;
+package com.example.assignment1gc200455715.Utiliites;
 
 public class DBCred {
     private static String userName = "Bibek200455715";

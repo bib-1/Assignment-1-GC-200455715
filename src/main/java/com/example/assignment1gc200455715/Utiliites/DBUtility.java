@@ -1,5 +1,7 @@
-package com.example.assignment1gc200455715;
+package com.example.assignment1gc200455715.Utiliites;
 
+import com.example.assignment1gc200455715.Model.ChessPlayer;
+import com.example.assignment1gc200455715.Utiliites.DBCred;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
@@ -10,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DBUtility {
     //This method will select data from the database.

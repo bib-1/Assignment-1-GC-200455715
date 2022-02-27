@@ -1,6 +1,4 @@
-package com.example.assignment1gc200455715;
-
-import java.util.Locale;
+package com.example.assignment1gc200455715.Model;
 
 public class ChessPlayer {
     private int id, rating;
@@ -67,10 +65,4 @@ public class ChessPlayer {
         else
             throw(new IllegalArgumentException("Country name must be at least 2 char long"));
     }
-
-    //Test CODE
-//    public static void main(String[] args) {
-//        ChessPlayer c = new ChessPlayer(1, "Bibek", "NEP", "M", 1200);
-//        System.out.println(c.getSex() +c.getCountry() +c.getName() +c.getId() +c.getRating());
-//    }
 }

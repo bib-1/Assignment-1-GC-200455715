@@ -9,15 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.assignment1gc200455715.PlayersRatingChartViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.assignment1gc200455715.Controllers.PlayersRatingChartViewController">
    <children>
       <BorderPane layoutX="108.0" layoutY="76.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <Label prefHeight="37.0" prefWidth="152.0" text="Number of Players by Rating" BorderPane.alignment="CENTER" />
+            <Label fx:id="lblTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="323.0" text="Number of Players by Rating" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </top>
          <center>
-            <BarChart fx:id="barChart" BorderPane.alignment="CENTER">
+            <BarChart fx:id="barChart" prefHeight="294.0" prefWidth="600.0" BorderPane.alignment="CENTER">
               <xAxis>
                 <CategoryAxis fx:id="ratingsAxis" side="BOTTOM" />
               </xAxis>
@@ -29,7 +33,7 @@
          <bottom>
             <Pane prefHeight="50.0" prefWidth="580.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" layoutX="500.0" layoutY="15.0" mnemonicParsing="false" onAction="#loadTableView" text="Table View" />
+                  <Button fx:id="btnSceneChanger" alignment="CENTER" layoutX="500.0" layoutY="15.0" mnemonicParsing="false" onAction="#loadTableView" text="Table View" />
                   <RadioButton fx:id="btnCountry" layoutX="162.0" layoutY="16.0" mnemonicParsing="false" onAction="#loadCountries" text="Countries" />
                   <RadioButton fx:id="btnGender" layoutX="331.0" layoutY="16.0" mnemonicParsing="false" onAction="#loadGender" text="Gender" />
                   <RadioButton fx:id="btnRating" layoutX="253.0" layoutY="16.0" mnemonicParsing="false" onAction="#loadRatings" text="Ratings" />

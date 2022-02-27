@@ -1,11 +1,13 @@
-package com.example.assignment1gc200455715;
+package com.example.assignment1gc200455715.Controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.assignment1gc200455715.Utiliites.DBUtility;
+import com.example.assignment1gc200455715.Utiliites.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
@@ -13,6 +15,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PlayersGenderChartViewController implements Initializable {
+
+    @FXML
+    private Label lblTitle;
+
+    @FXML
+    private Button btnSceneChanger;
 
     @FXML
     private RadioButton btnCountry;
@@ -47,7 +55,7 @@ public class PlayersGenderChartViewController implements Initializable {
      */
     @FXML
     void loadRatings(ActionEvent event) throws IOException {
-        SceneChanger.changeScene(event, "players-rating-chart-view.fxml", "Top Ten Country with Highest Number of Players");
+        SceneChanger.changeScene(event, "players-rating-chart-view.fxml", " Chess Player By Ratings");
     }
 
     /**
@@ -55,7 +63,7 @@ public class PlayersGenderChartViewController implements Initializable {
      */
     @FXML
     void loadGender(ActionEvent event) throws IOException {
-        SceneChanger.changeScene(event, "players-gender-chart-view.fxml", "Top Ten Country with Highest Number of Players");
+        SceneChanger.changeScene(event, "players-gender-chart-view.fxml", "Chess Player By Gender");
     }
 
     /**
@@ -63,6 +71,6 @@ public class PlayersGenderChartViewController implements Initializable {
      */
     @FXML
     void loadCountries(ActionEvent event) throws IOException {
-        SceneChanger.changeScene(event, "players-country-chart-view.fxml", "Top Ten Country with Highest Number of Players");
+        SceneChanger.changeScene(event, "players-country-chart-view.fxml", "Chess Player By Countries");
     }
 }

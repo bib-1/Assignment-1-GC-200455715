@@ -1,11 +1,12 @@
-package com.example.assignment1gc200455715;
+package com.example.assignment1gc200455715.Controllers;
 
+import com.example.assignment1gc200455715.Utiliites.DBUtility;
+import com.example.assignment1gc200455715.Model.ChessPlayer;
+import com.example.assignment1gc200455715.Utiliites.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -32,17 +33,6 @@ public class TableViewController implements Initializable {
 
     @FXML
     private TableColumn<ChessPlayer, Integer> ratingColumn;
-
-    @FXML
-    private RadioButton btnCountry;
-
-    @FXML
-    private RadioButton btnGender;
-
-    @FXML
-    private RadioButton btnRating;
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

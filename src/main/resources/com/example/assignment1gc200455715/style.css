@@ -1,0 +1,50 @@
+.root{
+    -fx-background-color: #7fb9ff;
+    -fx-font-family: Arial;
+}
+
+#lblTitle{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: #e85d04;
+}
+
+.button{
+    -fx-background-color: #fca311;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.button:hover{
+    -fx-background-color: #a16000;
+}
+
+.radio-button{
+    -fx-cursor: pointer;
+}
+
+.axis-label{
+    -fx-text-fill: #e85d04;
+    -fx-font-size: 14px;
+}
+
+.table-view{
+    -fx-background-color: #e85d04;
+}
+
+.table-column{
+    -fx-background-color: #7fb9ff;
+    -fx-border-color: #e85d04;
+    -fx-border-width: .5px;
+}
+
+.scroll-bar{
+    -fx-background-color:#7fb9ff;
+}
+
+.thumb{
+    -fx-background-color: #fca311;
+}
+
+

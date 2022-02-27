@@ -1,5 +1,6 @@
-package com.example.assignment1gc200455715;
+package com.example.assignment1gc200455715.Utiliites;
 
+import com.example.assignment1gc200455715.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,4 +18,5 @@ public class SceneChanger {
         stage.setScene(scene);
         stage.show();
     }
+
 }

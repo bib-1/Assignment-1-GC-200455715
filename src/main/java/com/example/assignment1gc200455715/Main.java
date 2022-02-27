@@ -7,8 +7,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
 
 public class Main extends Application {
 

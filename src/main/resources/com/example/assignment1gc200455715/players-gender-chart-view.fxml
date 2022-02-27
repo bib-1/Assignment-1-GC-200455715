@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.assignment1gc200455715.PlayersGenderChartViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.assignment1gc200455715.Controllers.PlayersGenderChartViewController">
    <children>
       <BorderPane layoutX="216.0" layoutY="60.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -20,12 +20,12 @@
             </PieChart>
          </center>
          <top>
-            <Label text="Chess Players By Gender" BorderPane.alignment="CENTER" />
+            <Label fx:id="lblTitle" alignment="CENTER" prefHeight="53.0" prefWidth="281.0" text="Chess Players By Gender" BorderPane.alignment="CENTER" />
          </top>
          <bottom>
             <Pane prefHeight="50.0" prefWidth="580.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" layoutX="500.0" layoutY="15.0" mnemonicParsing="false" onAction="#loadTableView" text="Table View" />
+                  <Button fx:id="btnSceneChanger" alignment="CENTER" layoutX="500.0" layoutY="15.0" mnemonicParsing="false" onAction="#loadTableView" text="Table View" />
                   <RadioButton fx:id="btnCountry" layoutX="162.0" layoutY="16.0" mnemonicParsing="false" onAction="#loadCountries" text="Countries" />
                   <RadioButton fx:id="btnGender" layoutX="331.0" layoutY="16.0" mnemonicParsing="false" onAction="#loadGender" text="Gender" />
                   <RadioButton fx:id="btnRating" layoutX="253.0" layoutY="16.0" mnemonicParsing="false" onAction="#loadRatings" text="Ratings" />
