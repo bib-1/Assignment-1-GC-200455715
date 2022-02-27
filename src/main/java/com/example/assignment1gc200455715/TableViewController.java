@@ -1,11 +1,14 @@
 package com.example.assignment1gc200455715;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -30,6 +33,16 @@ public class TableViewController implements Initializable {
     @FXML
     private TableColumn<ChessPlayer, Integer> ratingColumn;
 
+    @FXML
+    private RadioButton btnCountry;
+
+    @FXML
+    private RadioButton btnGender;
+
+    @FXML
+    private RadioButton btnRating;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,4 +63,11 @@ public class TableViewController implements Initializable {
         ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
     }
 
+    /**
+     *Change scene to the chart view
+     */
+    @FXML
+    void loadChartData(ActionEvent event) throws IOException {
+        SceneChanger.changeScene(event, "players-country-chart-view.fxml", "Top Ten Country with Highest Number of Players");
+    }
 }
