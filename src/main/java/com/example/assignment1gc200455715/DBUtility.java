@@ -1,5 +1,8 @@
 package com.example.assignment1gc200455715;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
 import java.io.*;
@@ -7,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DBUtility {
     //This method will select data from the database.
@@ -162,8 +166,42 @@ public class DBUtility {
         return ratings;
     }
 
+    public static ObservableList<PieChart.Data> getPieChartData() {
+
+
+        //Reference: https://stackoverflow.com/questions/12673873/javafx-piechart-created-with-scene-builder-does-not-dispaly-data
+        //Observable
+        ObservableList<PieChart.Data> genderData = FXCollections.observableArrayList();
+        try (
+                Connection conn = DriverManager.getConnection(DBCred.getConnectURL(), DBCred.getUserName(), DBCred.getPassword()); //connects to the database
+                Statement st = conn.createStatement(); //Creates connection object
+                ResultSet rs = st.executeQuery("SELECT sex, count(sex)\n" +
+                        "from chess_player\n" +
+                        "GROUP BY sex;") // Executes query and stores result
+        ) {
+            while (rs.next()) {
+                int numbers = rs.getInt("count(sex)"); // gets the integer value indexed from id column of db table
+                String gender = rs.getString("sex"); //gets the string value indexes from country column of database
+                if(gender.equalsIgnoreCase("M")) {
+                    genderData.addAll(new PieChart.Data("Male", numbers));
+                }
+                else{
+                    genderData.addAll(new PieChart.Data("Female", numbers));
+                }
+//                Metadata to check which column to select https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSetMetaData.html
+//                ResultSetMetaData rsMetaData = rs.getMetaData();
+//                System.out.println(rsMetaData.getColumnName(2));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return genderData;
+    }
+
     //main method to test the methods of this class
     public static void main(String[] args) throws SQLException {
-        getRatingsAndNumber();
-     }
+        getPieChartData();
+    }
 }
