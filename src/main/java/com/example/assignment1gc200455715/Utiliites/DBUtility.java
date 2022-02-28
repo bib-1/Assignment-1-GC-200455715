@@ -1,15 +1,11 @@
 package com.example.assignment1gc200455715.Utiliites;
 
 import com.example.assignment1gc200455715.Model.ChessPlayer;
-import com.example.assignment1gc200455715.Utiliites.DBCred;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -45,54 +41,6 @@ public class DBUtility {
         return players;
     }
 
-    /*
-     * To load data from csv to database
-     * Reference: https://www.java67.com/2015/08/how-to-load-data-from-csv-file-in-java.html
-     **/
-    public static void exportCsvToDatabase(String filename) throws IOException {
-
-        //using try with resource to read the file using BufferedReader
-        try (BufferedReader br = Files.newBufferedReader(Path.of(filename))
-        ) {
-            String line = br.readLine(); //to read the first line of the file
-
-            line = br.readLine(); // to skip the title line
-
-            while (line != null) {
-
-                String[] playerArray = line.split(",");
-
-                //calling the insert function to inter the player array which contains the name, country, sex and rating
-                insertPlayerIntoDB(playerArray);
-
-                line = br.readLine();
-            }
-        }
-    }
-
-    public static void insertPlayerIntoDB(String[] array) {
-
-        //insert statement
-        String insertQuery = "INSERT INTO chess_player(name, country, sex, rating) VALUES(?, ?, ?, ?);";
-
-        try (
-                Connection conn = DriverManager.getConnection(DBCred.getConnectURL(), DBCred.getUserName(), DBCred.getPassword()); //connects to the database
-                PreparedStatement ps = conn.prepareStatement(insertQuery)
-        ) {
-
-            //configuring the prepared statement to prevent SQL injection attacks
-            ps.setString(1, array[0]);
-            ps.setString(2, array[1]);
-            ps.setString(3, array[2]);
-            ps.setInt(4, Integer.parseInt(array[3]));
-
-            //run the command into DB
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     //method to get the countries and the number of players
     public static XYChart.Series<String, Integer> getCountryAndPlayer() {
@@ -199,10 +147,5 @@ public class DBUtility {
         }
 
         return genderData;
-    }
-
-    //main method to test the methods of this class
-    public static void main(String[] args) throws SQLException {
-        getPieChartData();
     }
 }
